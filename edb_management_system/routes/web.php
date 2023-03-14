@@ -14,7 +14,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ManufacturingDetailsController;
 use App\Http\Controllers\SRO693Controller;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\RegisterOEMController;
+use App\Http\Controllers\Auth\RegisterOEMController;
 
 
 

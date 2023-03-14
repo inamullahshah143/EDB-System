@@ -20,6 +20,7 @@ class CreateRegisterOemsTable extends Migration
             $table->string('secp_registration_no');
             $table->string('ntn_no');
             $table->string('strn_no');
+            $table->string('product_brand');
             $table->string('poc');
             $table->string('poc_cell');
             $table->string('contact');

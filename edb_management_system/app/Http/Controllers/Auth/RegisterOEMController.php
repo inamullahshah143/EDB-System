@@ -1,15 +1,45 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\RegisterOem;
+use App\Models\RegisterOem ;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterOEMController extends Controller
 {
+
+    use RegistersUsers;
+
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'level' => ['string'],
+
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +68,6 @@ class RegisterOEMController extends Controller
      */
     public function store(Request $request)
     {
-
         $user_id = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -47,7 +76,7 @@ class RegisterOEMController extends Controller
             'password' => Hash::make('password'),
         ])->id;
         
-        RegisterOem::create([
+       RegisterOem::create([
             'oem_id' => $user_id,
             'phone'=> $request->tel,
             'secp_registration_no'=> $request->secp_registration_no,
@@ -59,7 +88,11 @@ class RegisterOEMController extends Controller
             'contact'=> $request->contact,
             'registration_address'=> $request->registration_address,
             'factory_address'=> $request->factory_address,]);
+            
+            return redirect()->route('oem.home');
         }
+
+
 
     /**
      * Display the specified resource.

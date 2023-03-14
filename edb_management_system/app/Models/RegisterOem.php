@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -13,11 +12,11 @@ class RegisterOem  extends Authenticatable
 
     protected $fillable = [
         'oem_id',
-        'tel',
+        'phone',
         'secp_registration_no',
-        'ntn',
+        'ntn_no',
         'product_brand',
-        'strn',
+        'strn_no',
         'poc',
         'poc_cell', 
         'contact',
@@ -29,4 +28,5 @@ class RegisterOem  extends Authenticatable
         'created_at',
         'updated_at',
     ];
+
 }
