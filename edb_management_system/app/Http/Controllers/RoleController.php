@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdditionApplication;
+use App\Models\AmendmentApplication;
+use App\Models\RevalidationApplication;
+use App\Models\IssuanceApplication;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -19,7 +23,16 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+         'issuance' => IssuanceApplication::latest()->count(),
+         'addition' => AdditionApplication::latest()->count(),
+         'amendment' => AmendmentApplication::latest()->count(),
+         'revalidation' => RevalidationApplication::latest()->count(),
+         'menu' => 'menu.v_menu_admin',
+         'content' => 'content.roles_permission',
+         'title' => 'Roles & Permissions'
+      ];
+      return view('layouts.v_template', $data);
     }
 
     /**
