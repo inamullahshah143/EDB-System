@@ -13,16 +13,21 @@
                             </a>
                         </div>
                         <h4 class="text-center m-2 p-2">Register to your OEM account</h4>
-                        <form action="{{ route('register') }}" method="POST">
+                        <form action="{{ route('manufacturer_registration.store') }}" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for=" name">Manufacturer <span class="text-danger">*</span></label>
+                                <div class="form-group col">
+                                    <label for=" name">Username <span class="text-danger">*</span></label>
                                     <input type="text" v-model="form.name" required class="form-control" id="name"
                                         name="name" placeholder="Manufacturer">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="tel">Tel
+                                <div class="form-group col">
+                                    <label for="email">Email <span class="text-danger">*</span></label>
+                                    <input type="text" v-model="form.email" v-validate="'required|email'"
+                                        class="form-control" id="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="tel">Phone No.
                                         <span class="text-danger">*</span></label>
                                     <input type="text" v-model="form.tel" required class="form-control" id="tel"
                                         name="tel" placeholder="+92-3##-#######">
@@ -30,50 +35,29 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col">
                                     <label for="secp_registration_no">SECP Registration No. <span
                                             class="text-danger">*</span></label>
                                     <input type="text" v-model="form.secp_registration_no" required class="form-control"
                                         id="secp_registration_no" name="secp_registration_no" placeholder="##########">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email <span class="text-danger">*</span></label>
-                                    <input type="text" v-model="form.email" v-validate="'required|email'"
-                                        class="form-control" id="email" name="email" placeholder="Email">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col">
                                     <label for="ntn">NTN No. <span class="text-danger">*</span></label>
                                     <input type="text" v-model="form.ntn" required class="form-control" id="ntn"
                                         name="ntn" placeholder="##########">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="product_brand">Product Brand <span class="text-danger">*</span></label>
-                                    <input type="text" v-model="form.product_brand" required class="form-control"
-                                        id="product_brand" name="product_brand" placeholder="Product Brand">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col">
                                     <label for="strn">STRN No. (if any)</label>
                                     <input type="text" v-model="form.strn" class="form-control" id="strn"
                                         name="strn" placeholder="STRN No.">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="poc">POC <span class="text-danger">*</span></label>
-                                    <input type="text" v-model="form.poc" required class="form-control" id="poc"
-                                        name="poc" placeholder="POC">
-                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="poc_cell">POC Cell <span class="text-danger">*</span></label>
-                                    <input type="text" v-model="form.poc_cell" required class="form-control"
-                                        id="poc_cell" name="poc_cell" placeholder="+92-3##-#######">
+                                    <label for="product_brand">Brand Name<span class="text-danger">*</span></label>
+                                    <input type="text" v-model="form.product_brand" required class="form-control"
+                                        id="product_brand" name="product_brand" placeholder="Product Brand">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="contact">Contact <span class="text-danger">*</span></label>
@@ -84,29 +68,31 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="registration_address">Registration Address
-                                        <span class="text-danger">*</span></label>
-                                    <textarea rows="4"  type="text" v-model="form.registration_address" required
-                                        class="form-control" id="registration_address" name="registration_address" placeholder="Registration Address">
-                                </textarea>
+                                    <label for="poc">POC <span class="text-danger">*</span></label>
+                                    <input type="text" v-model="form.poc" required class="form-control" id="poc"
+                                        name="poc" placeholder="POC">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="factory_address">Factory Address
-                                        <span class="text-danger">*</span></label>
-                                    <textarea rows="4" type="text" v-model="form.factory_address" required
-                                        class="form-control" id="factory_address" name="factory_address" placeholder="Factory Address">
-                            </textarea>
+                                    <label for="poc_cell">POC Cell <span class="text-danger">*</span></label>
+                                    <input type="text" v-model="form.poc_cell" required class="form-control"
+                                        id="poc_cell" name="poc_cell" placeholder="+92-3##-#######">
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="form-group ">
-                                    <label for="name_of_organization">Name of Organization</label>
-                                    <input type="text" v-model="form.name_of_organization" class="form-control"
-                                        id="name_of_organization" name="name_of_organization"
-                                        placeholder="Name of Organization">
+                                <div class="form-group col-md-6">
+                                    <label for="registration_address">Registration Address <span
+                                            class="text-danger">*</span></label>
+                                    <textarea rows="4" type="text" v-model="form.registration_address" required class="form-control"
+                                        id="registration_address" name="registration_address" placeholder="Registration Address"></textarea>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="factory_address">Factory Address<span class="text-danger">*</span></label>
+                                    <textarea rows="4" type="text" v-model="form.factory_address" required class="form-control"
+                                        id="factory_address" name="factory_address" placeholder="Factory Address"></textarea>
                                 </div>
                             </div>
+
                             <div class="text-center">
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary ">Apply for Registration</button>

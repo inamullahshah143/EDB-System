@@ -14,6 +14,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ManufacturingDetailsController;
 use App\Http\Controllers\SRO693Controller;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RegisterOEMController;
 
 
 
@@ -87,3 +88,7 @@ Route::resource('oem_profile', OEMProfileController::class);
 
 //Manufacturing Details
 Route::resource('manufacturing_details', ManufacturingDetailsController::class);
+
+
+//Manufacturing Details
+Route::resource('manufacturer_registration', RegisterOEMController::class);

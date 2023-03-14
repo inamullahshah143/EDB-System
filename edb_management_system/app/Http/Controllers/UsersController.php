@@ -32,6 +32,8 @@ class UsersController extends Controller
         ];
 
         if ($request->ajax()) {
+
+            
             $q_user = User::select('*')->where('level', '!=', 0)->orderByDesc('created_at');
             return Datatables::of($q_user)
                 ->addIndexColumn()

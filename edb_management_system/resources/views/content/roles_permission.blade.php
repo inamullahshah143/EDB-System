@@ -46,6 +46,25 @@
                         <input type="text" class="form-control" id="role_title" name="role_title" required />
                         <span class="form-text text-muted">Manager, Assistant Manager, etc...</span>
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-contorller"> <select id="choices-multiple-remove-button"
+                                placeholder="Select upto 5 tags" multiple>
+                                <option value="HTML">HTML</option>
+                                <option value="Jquery">Jquery</option>
+                                <option value="CSS">CSS</option>
+                                <option value="Bootstrap 3">Bootstrap 3</option>
+                                <option value="Bootstrap 4">Bootstrap 4</option>
+                                <option value="Java">Java</option>
+                                <option value="Javascript">Javascript</option>
+                                <option value="Angular">Angular</option>
+                                <option value="Python">Python</option>
+                                <option value="Hybris">Hybris</option>
+                                <option value="SQL">SQL</option>
+                                <option value="NOSQL">NOSQL</option>
+                                <option value="NodeJS">NodeJS</option>
+                            </select> </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
