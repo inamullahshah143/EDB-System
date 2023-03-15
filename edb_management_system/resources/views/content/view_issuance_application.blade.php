@@ -24,12 +24,22 @@
                                     <th> Tracking ID</th>
                                     <th> OEM Details</th>
                                     <th> Vehcile Details</th>
+                                    <th> Technical Agreement</th>
+                                    <th> Technical Aggrement Validity</th>
+                                    <th> Purchase Document</th>
+                                    <th> Purchase Document Validity</th>
+                                    <th> Lease Aggrement</th>
+                                    <th> Lease Aggrement Validity</th>
+                                    <th> Snaps of Inhouse Facilities</th>
+                                    <th> Copies of STC</th>
+                                    <th> Factory Map</th>
+                                    <th> Manpower Breakup</th>
+                                    <th> Factory Address</th>
+                                    <th> Executive Details</th>
                                     <th> List of Plants</th>
                                     <th> List of Vendors</th>
                                     <th> Brand Details</th>
                                     <th> Parts Catalogue</th>
-                                    <th> Lease Aggrement</th>
-                                    <th> Lease Aggrement Validity</th>
                                     <th> SRO-656 CKD</th>
                                     <th> SRO-693 CKD</th>
                                     <th> Action</th>
@@ -81,36 +91,52 @@
                 <div class="modal-body">
                     <div class="row m-3">
                         <div class="col-sm-4 justify-content-start">
-                            <h6>Name:</h6>
-                            <h6>Email:</h6>
-                            <h6>Phone No.:</h6>
-                            <h6>Under SRO:</h6>
-                            <h6>Category:</h6>
-                            <h6>SECP Registration No.:</h6>
-                            <h6>NTN:</h6>
-                            <h6>STRN:</h6>
-                            <h6>Brand Name:</h6>
-                            <h6>POC:</h6>
-                            <h6>POC Cell:</h6>
-                            <h6>Registration Address:</h6>
-                            <h6>Factory Address:</h6>
-                            <h6>Name of Organization:</h6>
+                            <p>Name:</p>
+                            <p>Email:</p>
+                            <p>Phone No.:</p>
+                            <p>SECP Registration No.:</p>
+                            <p>NTN:</p>
+                            <p>STRN:</p>
+                            <p>Brand Name:</p>
+                            <p>POC:</p>
+                            <p>POC Cell:</p>
+                            <p>Registration Address:</p>
+                            <p>Factory Address:</p>
                         </div>
                         <div class="col-sm-8">
-                            <h6 id="name"></h6>
-                            <h6 id="email"></h6>
-                            <h6 id="tel"></h6>
-                            <h6 id="sro"></h6>
-                            <h6 id="type_of_wheeler"></h6>
-                            <h6 id="secp_registration_no"></h6>
-                            <h6 id="ntn"></h6>
-                            <h6 id="strn"></h6>
-                            <h6 id="product_brand"></h6>
-                            <h6 id="poc"></h6>
-                            <h6 id="poc_cell"></h6>
-                            <h6 id="registration_address"></h6>
-                            <h6 id="factory_address"></h6>
-                            <h6 id="name_of_organization"></h6>
+                            <strong>
+                                <p id="oem_name"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_email"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_phone"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_secp_registration_no"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_ntn_no"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_strn_no"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_product_brand"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_poc"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_poc_cell"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_registration_address"></p>
+                            </strong>
+                            <strong>
+                                <p id="oem_factory_address"></p>
+                            </strong>
                         </div>
                     </div>
                 </div>
@@ -133,20 +159,32 @@
             <div class="modal-body">
                 <div class="row m-3">
                     <div class="col-sm-4 justify-content-start">
-                        <h6>Vehicle Name:</h6>
-                        <h6>Vehicle Maker:</h6>
-                        <h6>Vehicle Model:</h6>
-                        <h6>Vehicle HS Code:</h6>
-                        <h6>Category:</h6>
-                        <h6>Under SRO:</h6>
+                        <p>Vehicle Name:</p>
+                        <p>Vehicle Maker:</p>
+                        <p>Vehicle Model:</p>
+                        <p>Vehicle HS Code:</p>
+                        <p>Category:</p>
+                        <p>Under SRO:</p>
                     </div>
                     <div class="col-sm-8">
-                        <h6 id="vehicle_name"></h6>
-                        <h6 id="vehicle_make"></h6>
-                        <h6 id="vehicle_model"></h6>
-                        <h6 id="vehicle_hs_code"></h6>
-                        <h6 id="category"></h6>
-                        <h6 id="under_sro"></h6>
+                        <strong>
+                            <p id="vehicle_name"></p>
+                        </strong>
+                        <strong>
+                            <p id="vehicle_make"></p>
+                        </strong>
+                        <strong>
+                            <p id="vehicle_model"></p>
+                        </strong>
+                        <strong>
+                            <p id="vehicle_hs_code"></p>
+                        </strong>
+                        <strong>
+                            <p id="category"></p>
+                        </strong>
+                        <strong>
+                            <p id="under_sro"></p>
+                        </strong>
                     </div>
                 </div>
             </div>
@@ -236,6 +274,77 @@
                     },
 
                     {
+                        data: 'technical_agreement_doc',
+                        name: 'technical_agreement_doc',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'technical_assistance_agreement',
+                        name: 'technical_assistance_agreement',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'purchase_doc_of_plant',
+                        name: 'purchase_doc_of_plant',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'purchase_doc_of_plant_validity',
+                        name: 'purchase_doc_of_plant_validity',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'lease_agreement',
+                        name: 'lease_agreement',
+                        className: "text-center",
+                    },
+                    {
+                        data: 'lease_agreement_validity',
+                        name: 'lease_agreement_validity',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'snaps_of_inhouse_facilities',
+                        name: 'snaps_of_inhouse_facilities',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'copies_of_sales_tax_certificate',
+                        name: 'copies_of_sales_tax_certificate',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'factory_map',
+                        name: 'factory_map',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'manpower_break_up',
+                        name: 'manpower_break_up',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'address_of_factory',
+                        name: 'address_of_factory',
+                        className: "text-center",
+                    },
+
+                    {
+                        data: 'name_of_chief_executive',
+                        name: 'name_of_chief_executive',
+                        className: "text-center",
+                    },
+
+                    {
                         data: 'list_of_plant',
                         name: 'list_of_plant',
                         className: "text-center",
@@ -253,16 +362,6 @@
                     {
                         data: 'parts_catalogue',
                         name: 'parts_catalogue',
-                        className: "text-center",
-                    },
-                    {
-                        data: 'lease_agreement',
-                        name: 'lease_agreement',
-                        className: "text-center",
-                    },
-                    {
-                        data: 'lease_agreement_validity',
-                        name: 'lease_agreement_validity',
                         className: "text-center",
                     },
                     {
@@ -300,6 +399,30 @@
 
 
             $(document).on('click', '#oemDetailBtn', function() {
+                var oem_name = $(this).attr('data-username');
+                var oem_email = $(this).attr('data-email');
+                var oem_phone = $(this).attr('data-phone');
+                var oem_secp_registration_no = $(this).attr('data-secp-registration-no');
+                var oem_ntn_no = $(this).attr('data-ntn-no');
+                var oem_strn_no = $(this).attr('data-strn-no');
+                var oem_product_brand = $(this).attr('data-product-brand');
+                var oem_poc = $(this).attr('data-poc');
+                var oem_poc_cell = $(this).attr('data-poc-cell');
+                var oem_contact = $(this).attr('data-contact');
+                var oem_registration_address = $(this).attr('data-registration-address');
+                var oem_factory_address = $(this).attr('data-factory-address');
+                $('#oem_name').html(oem_name);
+                $('#oem_email').html(oem_email);
+                $('#oem_phone').html(oem_phone);
+                $('#oem_secp_registration_no').html(oem_secp_registration_no);
+                $('#oem_ntn_no').html(oem_ntn_no);
+                $('#oem_strn_no').html(oem_strn_no);
+                $('#oem_product_brand').html(oem_product_brand);
+                $('#oem_poc').html(oem_poc);
+                $('#oem_poc_cell').html(oem_poc_cell);
+                $('#oem_poc_cell').html(oem_poc_cell);
+                $('#oem_registration_address').html(oem_registration_address);
+                $('#oem_factory_address').html(oem_factory_address);
             });
 
             $(document).on('click', '#vehicleDetailBtn', function() {

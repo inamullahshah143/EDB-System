@@ -1,13 +1,15 @@
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
-        <div class="card" style="display: none" id="applicationForm">
-            <div class="card-header">
-                <div class="d-flex">
-                    <h2 class="col">{{ $title }}</h2>
+        <form id="issuanceForm" name="issuanceForm" method="POST" action="{{ route('issuances.store') }}"
+            enctype="multipart/form-data">
+            @csrf
+            <div class="card" style="display: none" id="applicationForm">
+                <div class="card-header">
+                    <div class="d-flex">
+                        <h2 class="col">{{ $title }}</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <form id="issuanceForm" name="issuanceForm">
+                <div class="card-body">
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
@@ -119,6 +121,114 @@
                     <br><br>
                     <div class="form-group">
                         <h5><strong>Supporting Documents</strong></h5>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="technical_agreement_doc" class="form-label">Technical assistance agreement
+                                    with the foreign principal, (if any.)</label>
+                                <div class="custom-file">
+                                    <input class="custom-file-input" type="file" id="technical_agreement_doc"
+                                        name="technical_agreement_doc" accept=".pdf">
+                                    <label class="custom-file-label" for="list_of_plant">Choose file</label>
+                                    <span class="form-text text-muted">your technical assistance agreement must be
+                                        valid for at-least
+                                        3 year's</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="technical_assistance_agreement">Validate Till</label>
+                                    <input type="date" class="form-control" id="technical_assistance_agreement"
+                                        name="technical_assistance_agreement" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="purchase_doc_of_plant" class="form-label">Purchase documents of
+                                    plant/machinery/equipment installed as in-house facilities. <span
+                                        class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input class="custom-file-input" type="file" id="purchase_doc_of_plant"
+                                        name="purchase_doc_of_plant" accept=".pdf" required
+                                        onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('Please upload purchase documents of plant/machinery/equipment installed as in-house facilities')">
+                                    <label class="custom-file-label" for="purchase_doc_of_plant">Choose file</label>
+                                    <span class="form-text text-muted">your purchase documents must be valid for
+                                        at-least
+                                        3 year's</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="purchase_doc_of_plant_validity"><br>Validate Till <span
+                                            class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" required
+                                        id="purchase_doc_of_plant_validity" onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('Please enter purchase documents validity')"
+                                        name="purchase_doc_of_plant_validity" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="lease_agreement">Copy of lease agreement if premises on rent/ownership
+                                    documents. <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input type="file" accept=".pdf" class="custom-file-input" required
+                                        onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('please upload Copy of lease agreement if premises on rent/ownership')"
+                                        name="lease_agreement" id="lease_agreement" />
+                                    <label class="custom-file-label" for="lease_agreement">Choose file</label>
+                                    <span class="form-text text-muted">your lease agreement must be valid for at-least
+                                        3 year's</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="lease_agreement_validity">Validate Till <span
+                                            class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" required
+                                        onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('Please enter lease agreement validity')"
+                                        name="lease_agreement_validity" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="snaps_of_inhouse_facilities">Snaps of in-house facilities e.g. engine
+                                    assembly & testing,
+                                    vehicle final assembly, paint shop, vehicle performance testing facilities and
+                                    inspection equipment etc. <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input type="file" accept=".pdf" class="custom-file-input" required
+                                        onchange="this.setCustomValidity('')" name="snaps_of_inhouse_facilities"
+                                        id="snaps_of_inhouse_facilities"
+                                        oninvalid="this.setCustomValidity('Please upload Snaps of in-house facilities e.g. engine assembly & testing, vehicle final assembly, paint shop, vehicle performance testing facilities and inspection equipment etc.')" />
+                                    <label class="custom-file-label" for="snaps_of_inhouse_facilities">Choose
+                                        file</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="copies_of_sales_tax_certificate">Copies of Sales Tax Certificate (STN)
+                                    containing the status as importer-cumassembler or manufacturer & National Tax Number
+                                    (NTN) certificates in the name of the company. <span
+                                        class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input type="file" accept=".pdf" class="custom-file-input" required
+                                        onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('Please upload Copies of Sales Tax Certificate (STN) containing the status as importer-cumassembler or manufacturer & National Tax Number (NTN) certificates in the name of the company.')"
+                                        name="copies_of_sales_tax_certificate" id="copies_of_sales_tax_certificate" />
+                                    <label class="custom-file-label" for="copies_of_sales_tax_certificate">Choose
+                                        file</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-row form-group">
                             <div class="col">
                                 <label for="list_of_plant">List of plant/machinery/equipment with
@@ -146,6 +256,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row form-group">
                             <div class="col">
                                 <label for="list_of_vendor">List of vendors’ components to be purchased with complete
@@ -172,38 +283,64 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row form-group">
                             <div class="col">
-                                <label for="lease_agreement">Copy of lease agreement if premises on rent/ownership
-                                    documents. <span class="text-danger">*</span></label>
+                                <label for="factory_map">Complete factory map / lay out.
+                                    <span class="text-danger">*</span></label>
                                 <div class="custom-file">
                                     <input type="file" accept=".pdf" class="custom-file-input" required
                                         onchange="this.setCustomValidity('')"
-                                        oninvalid="this.setCustomValidity('please upload Copy of lease agreement if premises on rent/ownership')"
-                                        name="lease_agreement" id="lease_agreement" />
-                                    <label class="custom-file-label" for="lease_agreement">Choose file</label>
-                                    <span class="form-text text-muted">your lease agreement must be valid for at-least
-                                        3 year's</span>
+                                        oninvalid="this.setCustomValidity('Please upload Complete factory map / lay out.')"
+                                        name="factory_map" id="factory_map" />
+                                    <label class="custom-file-label" for="factory_map">Choose file</label>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="form-group">
-                                    <label for="lease_agreement_validity">Validate Till <span
-                                            class="text-danger">*</span></label>
-                                    <input type="date" class="form-control" required
-                                        onchange="this.setCustomValidity('')"
-                                        oninvalid="this.setCustomValidity('Please enter lease agreement validity')"
-                                        name="lease_agreement_validity" />
+                                <label for="manpower_break_up">Manpower break up as technical/non technical, (if
+                                    any.)</label>
+                                <div class="custom-file">
+                                    <input type="file" accept=".pdf" class="custom-file-input"
+                                        name="manpower_break_up" id="manpower_break_up" />
+                                    <label class="custom-file-label" for="manpower_break_up">Choose file</label>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label for="address_of_factory">Complete address of the factory and registered office
+                                    with phone, fax and email etc.
+                                    <span class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input type="file" accept=".pdf" class="custom-file-input" required
+                                        onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('Please upload Complete address of the factory and registered office with phone, fax and email etc.')"
+                                        name="address_of_factory" id="address_of_factory" />
+                                    <label class="custom-file-label" for="address_of_factory">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="name_of_chief_executive">Name of the Chief Executive /Managing Director or
+                                    an authorized officer of the firm for correspondence with EDB. <span
+                                        class="text-danger">*</span></label>
+                                <div class="custom-file">
+                                    <input type="file" accept=".pdf" class="custom-file-input" required
+                                        onchange="this.setCustomValidity('')"
+                                        oninvalid="this.setCustomValidity('Please upload Name of the Chief Executive /Managing Director or an authorized officer of the firm for correspondence with EDB. ')"
+                                        name="name_of_chief_executive" id="name_of_chief_executive" />
+                                    <label class="custom-file-label" for="name_of_chief_executive">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </form>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary font-weight-bold" id="">Apply</button>
+                </div>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary font-weight-bold" id="saveBtn">Apply</button>
-            </div>
-        </div>
+        </form>
         <div class="card text-center" style="display: none" id="applicationTracking">
             <div class="card-header">
                 <div class="col">

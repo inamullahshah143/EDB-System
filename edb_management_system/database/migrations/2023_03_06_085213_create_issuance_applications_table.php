@@ -23,6 +23,16 @@ class CreateIssuanceApplicationsTable extends Migration
             $table->foreignId('list_of_vendor_id')->constrained('files')->cascadeOnDelete();
             $table->foreignId('parts_catalogue_id')->constrained('files')->cascadeOnDelete();
             $table->foreignId('lease_agreement_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('technical_agreement_doc_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('purchase_doc_of_plant_id' )->constrained('files')->cascadeOnDelete();
+            $table->foreignId('snaps_of_inhouse_facilities_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('copies_of_sales_tax_certificate_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('factory_map_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('manpower_break_up_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('address_of_factory_id')->constrained('files')->cascadeOnDelete();
+            $table->foreignId('name_of_chief_executive_id')->constrained('files')->cascadeOnDelete();
+            $table->date('technical_assistance_agreement');
+            $table->date('purchase_doc_of_plant_validity');
             $table->date('lease_agreement_validity');
             $table->string('application_status');
             $table->timestamps();
