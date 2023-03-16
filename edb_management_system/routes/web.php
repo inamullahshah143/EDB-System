@@ -15,6 +15,7 @@ use App\Http\Controllers\ManufacturingDetailsController;
 use App\Http\Controllers\SRO693Controller;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Auth\RegisterOEMController;
+use App\Http\Controllers\ApplicationProcessingController;
 
 
 
@@ -78,6 +79,11 @@ Route::resource('issuance', IssuanceController::class);
 Route::get('/addition', [AdditionController::class, 'index'])->name('addition.index');
 Route::get('/amendment', [AmendmentController::class, 'index'])->name('amendment.index');
 Route::get('/revalidation', [RevalidationController::class, 'index'])->name('revalidation.index');
+// -------------------------- application processing ----------------------//
+Route::controller(ApplicationProcessingController::class)->group(function () {
+    Route::post('application_return', 'applicationReturn')->name('application_return');
+    Route::post('application_remarks', 'applicationRemarks')->name('application_remarks');
+});
 });
 
 

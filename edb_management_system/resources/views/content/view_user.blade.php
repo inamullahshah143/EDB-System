@@ -45,13 +45,14 @@
                 <form id="formUser" name="formUser">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Name"><br>
-                        <input type="email" name="email" class="form-control" id="email"
-                            placeholder="email"><br>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="email">
                         <select name="level" class="form-control" id="level">
-                            <option value="-">Pilih Level</option>
-                            <option value="1">Operator</option>
-                            <option value="2">Member</option>
-                        </select><br>
+                            <option selected disabled>-- Select Designation --</option>
+                            <option value="1">Assistant Manager</option>
+                            <option value="2">Deputy Manager</option>
+                            <option value="3">General Manager</option>
+                            <option value="4">Chief Executive Officer</option>
+                        </select>
                         <input type="text" name="password" class="form-control" placeholder="password"><br>
                         <input type="hidden" name="user_id" id="user_id" value="">
                     </div>

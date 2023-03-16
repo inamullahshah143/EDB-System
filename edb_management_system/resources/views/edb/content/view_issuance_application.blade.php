@@ -193,328 +193,332 @@
 </div>
 
 <!-- Proceed Application-->
-<div class="modal fade" id="proceed_application" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <div class="col text-white">
-                    <h3>Process Application</h3>
-                    <p>Check-boxes if documents are found to be valid</p>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close  text-white"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="text" name="application_id" id="application_id" hidden>
-                <input type="text" name="manufecturer_id" id="manufecturer_id" hidden>
 
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="technical_agreement_doc_check" name="technical_agreement_doc_check">
-                        <label class="form-check-label" for="technical_agreement_doc_check">Technical assistance
-                            agreement with the foreign principal, (if any.)</label>
+<form action="{{ route('application_remarks') }}" method="POST">
+    @csrf
+    <div class="modal fade" id="proceed_application" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <div class="col text-white">
+                        <h3>Process Application</h3>
+                        <p>Check-boxes if documents are found to be valid</p>
                     </div>
-                    <div class="form-group" id="technical_agreement_doc_div">
-                        <label for="technical_agreement_doc_remarks">Deficiencies/ Remarks<span
-                                class="text-danger">*</span></label>
-                        <textarea class="form-control" id="technical_agreement_doc_remarks" name="technical_agreement_doc_remarks"
-                            rows="3" required></textarea>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close  text-white"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="application_id" id="application_id" hidden>
+                    <input type="text" name="manufecturer_id" id="manufecturer_id" hidden>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="technical_agreement_doc_check" name="technical_agreement_doc_check">
+                            <label class="form-check-label" for="technical_agreement_doc_check">Technical assistance
+                                agreement with the foreign principal, (if any.)</label>
+                        </div>
+                        <div class="form-group" id="technical_agreement_doc_div">
+                            <label for="technical_agreement_doc_remarks">Deficiencies/ Remarks<span
+                                    class="text-danger">*</span></label>
+                            <textarea class="form-control" id="technical_agreement_doc_remarks" name="technical_agreement_doc_remarks"
+                                rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="technical_agreement_doc_validatity_check"
+                                name="technical_agreement_doc_validatity_check">
+                            <label for="technical_agreement_doc_validatity_check" class="form-check-label">Technical
+                                Agreement Document Validatity</label>
+                        </div>
+                        <div class="form-group" id="technical_agreement_doc_validatity_div">
+                            <label for="technical_agreement_doc_validatity_remarks">Deficiencies/ Remarks <span
+                                    class="text-danger">*</span></label>
+                            <textarea class="form-control" id="technical_agreement_doc_validatity_remarks"
+                                name="technical_agreement_doc_validatity_remarks" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="list_of_plant_check" name="list_of_plant_check">
+                            <label class="form-check-label" for="list_of_plant_check">List of plant / machinery
+                                / equipment with
+                                complete specification, make /
+                                model, local/ imported, if imported, name of the company as defined in
+                                ‘Annexure-A’ of the SRO.</label>
+                        </div>
+                        <div class="form-group" id="list_of_plant_div">
+                            <label for="list_of_plant_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="list_of_plant_remarks" id="list_of_plant_remarks" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="purchase_documents_of_plant_check" name="purchase_documents_of_plant_check">
+                            <label class="form-check-label" for="purchase_documents_of_plant_check">Purchase documents
+                                of plant/
+                                machinery/equipment
+                                installed as in-house
+                                facilities.</label>
+                        </div>
+                        <div class="form-group" id="purchase_documents_of_plant_div">
+                            <label for="purchase_documents_of_plant_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="purchase_documents_of_plant_remarks" id="purchase_documents_of_plant_remarks"
+                                rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="snaps_of_inhouse_facilities_check" name="snaps_of_inhouse_facilities_check">
+                            <label class="form-check-label" for="snaps_of_inhouse_facilities_check">Snaps of in-house
+                                facilities
+                                e.g.
+                                engine assembly & testing, vehicle final
+                                assembly, paint shop, vehicle performance testing facilities and inspection
+                                equipment etc.</label>
+                        </div>
+                        <div class="form-group" id="snaps_of_inhouse_facilities_div">
+                            <label for="snaps_of_inhouse_facilities_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="snaps_of_inhouse_facilities_remarks" id="snaps_of_inhouse_facilities_remarks"
+                                rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="copies_of_sales_tax_check" name="copies_of_sales_tax_check">
+                            <label class="form-check-label" for="copies_of_sales_tax_check">Copies
+                                of Sales Tax
+                                Certificate (STN)
+                                containing the status as importer-cumassembler or manufacturer & National Tax
+                                Number (NTN) certificates in the
+                                name of the company.</label>
+                        </div>
+                        <div class="form-group" id="copies_of_sales_tax_div">
+                            <label for="copies_of_sales_tax_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="copies_of_sales_tax_remarks" id="copies_of_sales_tax_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="products_brand_name_check" name="products_brand_name_check">
+                            <label class="form-check-label" for="products_brand_name_check">Product (s) brand name to
+                                be
+                                assembled
+                                / manufactured in-house with a copy
+                                of Trade Mark Registration Certificate or acknowledgement receipt issued by
+                                the IPO/ Trade Mark Registry office.</label>
+                        </div>
+                        <div class="form-group" id="products_brand_name_div">
+                            <label for="products_brand_name_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="products_brand_name_remarks" id="products_brand_name_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="proof_of_factory_check" name="proof_of_factory_check">
+                            <label class="form-check-label" for="proof_of_factory_check">Proof of factory premises
+                                ownership or
+                                copy of lease agreement, if premises
+                                on rent.</label>
+                        </div>
+                        <div class="form-group" id="proof_of_factory_div">
+                            <label for="proof_of_factory_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="proof_of_factory_remarks" id="proof_of_factory_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="complete_factory_map_check" name="complete_factory_map_check">
+                            <label class="form-check-label" for="complete_factory_map_check">Complete factory map /
+                                lay
+                                out.</label>
+                        </div>
+                        <div class="form-group" id="complete_factory_map_div">
+                            <label for="complete_factory_map_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="complete_factory_map_remarks" id="complete_factory_map_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="address_of_factory_check" name="address_of_factory_check">
+                            <label class="form-check-label" for="address_of_factory_check">Complete address of the
+                                factory and
+                                registered office with phone, fax and email etc.</label>
+                        </div>
+                        <div class="form-group" id="address_of_factory_div">
+                            <label for="address_of_factory_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="address_of_factory_remarks" id="address_of_factory_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="name_of_chief_executive_check" name="name_of_chief_executive_check">
+                            <label class="form-check-label" for="name_of_chief_executive_check">Name of the Chief
+                                Executive /
+                                Managing
+                                Director or an authorized officer of
+                                the firm for correspondence with EDB.</label>
+                        </div>
+                        <div class="form-group" id="name_of_chief_executive_div">
+                            <label for="name_of_chief_executive_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="name_of_chief_executive_remarks" id="name_of_chief_executive_remarks"
+                                rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="manpower_break_up_check" name="manpower_break_up_check">
+                            <label class="form-check-label" for="manpower_break_up_check">Manpower break up as
+                                technical/non
+                                technical, (if any.)</label>
+                        </div>
+                        <div class="form-group" id="manpower_break_up_div">
+                            <label for="manpower_break_up_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="manpower_break_up_remarks" id="manpower_break_up_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="parts_catalogue_check" name="parts_catalogue_check">
+                            <label class="form-check-label" for="parts_catalogue_check">Parts Catalogue of vehicle
+                                duly
+                                signed
+                                and stamped.</label>
+                        </div>
+                        <div class="form-group" id="parts_catalogue_div">
+                            <label for="parts_catalogue_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="parts_catalogue_remarks" id="parts_catalogue_remarks" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="noc_from_municipal_check" name="noc_from_municipal_check">
+                            <label class="form-check-label" for="noc_from_municipal_check">An NOC from the Municipal
+                                Committee /
+                                Town Committee.</label>
+                        </div>
+                        <div class="form-group" id="noc_from_municipal_div">
+                            <label for="noc_from_municipal_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="noc_from_municipal_remarks" id="noc_from_municipal_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="registration_of_firm_check" name="registration_of_firm_check">
+                            <label class="form-check-label" for="registration_of_firm_check">Copy of the registration
+                                of
+                                firm with
+                                SECP in case of Private Limited or Public
+                                Limited compay and registration with The Registrar of Firms in case of AOP.</label>
+                        </div>
+                        <div class="form-group" id="registration_of_firm_div">
+                            <label for="registration_of_firm_remarks">Deficiencies/ Remarks
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="registration_of_firm_remarks" id="registration_of_firm_remarks" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory" id="format_I_check"
+                                name="format_I_check">
+                            <label class="form-check-label" for="format_I_check">List of 100% parts with %age index
+                                constituting a
+                                complte vehicle as per the
+                                attached Format-I and comprising off:-<br>
+                                i- Importable components.<br>
+                                ii- Localized components to be procured from the vendors with their names &
+                                contacts against each item.<br>
+                                iii- List of componnts to be manufactured in-house.<br>
+                                iv- Comparison of parts with parts contained under SRO 693(I)/2006.</label>
+                        </div>
+                        <div class="form-group" id="format_I_div">
+                            <label for="format_I_remarks">Deficiencies/ Remarks <span
+                                    class="text-danger">*</span></label>
+                            <textarea class="form-control" name="format_I_remarks" id="format_I_remarks" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" class="compulsory" id="format_II_check"
+                                name="format_II_check">
+                            <label class="form-check-label" for="format_II_check">List of CKD parts to be imported
+                                under
+                                condition (iii) of
+                                the
+                                SRO for
+                                verification as per attached Format-II.</label>
+                        </div>
+                        <div class="form-group" id="format_II_div">
+                            <label for="format_II_remarks">Deficiencies/ Remarks <span
+                                    class="text-danger">*</span></label>
+                            <textarea class="form-control" name="format_II_remarks" id="format_II_remarks" rows="3" required></textarea>
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="technical_agreement_doc_validatity_check"
-                            name="technical_agreement_doc_validatity_check">
-                        <label for="technical_agreement_doc_validatity_check" class="form-check-label">Technical
-                            Agreement Document Validatity</label>
-                    </div>
-                    <div class="form-group" id="technical_agreement_doc_validatity_div">
-                        <label for="technical_agreement_doc_validatity_remarks">Deficiencies/ Remarks <span
-                                class="text-danger">*</span></label>
-                        <textarea class="form-control" id="technical_agreement_doc_validatity_remarks"
-                            name="technical_agreement_doc_validatity_remarks" rows="3" required></textarea>
-                    </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary  btn-sm" class="close" data-dismiss="modal" type="button"
+                        data-toggle="modal" data-target="#forward_application" id="accept_btn">Forward for futher
+                        processing</button>
+                    <button class="btn btn-danger btn-sm" name="action" type="submit" value="revision"
+                        id="revision_btn">Return to OEM</button>
                 </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory" id="list_of_plant_check"
-                            name="list_of_plant_check">
-                        <label class="form-check-label" for="list_of_plant_check">List of plant / machinery
-                            / equipment with
-                            complete specification, make /
-                            model, local/ imported, if imported, name of the company as defined in
-                            ‘Annexure-A’ of the SRO.</label>
-                    </div>
-                    <div class="form-group" id="list_of_plant_div">
-                        <label for="list_of_plant_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="list_of_plant_remarks" id="list_of_plant_remarks" rows="3" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="purchase_documents_of_plant_check" name="purchase_documents_of_plant_check">
-                        <label class="form-check-label" for="purchase_documents_of_plant_check">Purchase documents
-                            of plant/
-                            machinery/equipment
-                            installed as in-house
-                            facilities.</label>
-                    </div>
-                    <div class="form-group" id="purchase_documents_of_plant_div">
-                        <label for="purchase_documents_of_plant_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="purchase_documents_of_plant_remarks" id="purchase_documents_of_plant_remarks"
-                            rows="3" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="snaps_of_inhouse_facilities_check" name="snaps_of_inhouse_facilities_check">
-                        <label class="form-check-label" for="snaps_of_inhouse_facilities_check">Snaps of in-house
-                            facilities
-                            e.g.
-                            engine assembly & testing, vehicle final
-                            assembly, paint shop, vehicle performance testing facilities and inspection
-                            equipment etc.</label>
-                    </div>
-                    <div class="form-group" id="snaps_of_inhouse_facilities_div">
-                        <label for="snaps_of_inhouse_facilities_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="snaps_of_inhouse_facilities_remarks" id="snaps_of_inhouse_facilities_remarks"
-                            rows="3" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="copies_of_sales_tax_check" name="copies_of_sales_tax_check">
-                        <label class="form-check-label" for="copies_of_sales_tax_check">Copies
-                            of Sales Tax
-                            Certificate (STN)
-                            containing the status as importer-cumassembler or manufacturer & National Tax
-                            Number (NTN) certificates in the
-                            name of the company.</label>
-                    </div>
-                    <div class="form-group" id="copies_of_sales_tax_div">
-                        <label for="copies_of_sales_tax_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="copies_of_sales_tax_remarks" id="copies_of_sales_tax_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="products_brand_name_check" name="products_brand_name_check">
-                        <label class="form-check-label" for="products_brand_name_check">Product (s) brand name to
-                            be
-                            assembled
-                            / manufactured in-house with a copy
-                            of Trade Mark Registration Certificate or acknowledgement receipt issued by
-                            the IPO/ Trade Mark Registry office.</label>
-                    </div>
-                    <div class="form-group" id="products_brand_name_div">
-                        <label for="products_brand_name_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="products_brand_name_remarks" id="products_brand_name_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="proof_of_factory_check" name="proof_of_factory_check">
-                        <label class="form-check-label" for="proof_of_factory_check">Proof of factory premises
-                            ownership or
-                            copy of lease agreement, if premises
-                            on rent.</label>
-                    </div>
-                    <div class="form-group" id="proof_of_factory_div">
-                        <label for="proof_of_factory_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="proof_of_factory_remarks" id="proof_of_factory_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="complete_factory_map_check" name="complete_factory_map_check">
-                        <label class="form-check-label" for="complete_factory_map_check">Complete factory map /
-                            lay
-                            out.</label>
-                    </div>
-                    <div class="form-group" id="complete_factory_map_div">
-                        <label for="complete_factory_map_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="complete_factory_map_remarks" id="complete_factory_map_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="address_of_factory_check" name="address_of_factory_check">
-                        <label class="form-check-label" for="address_of_factory_check">Complete address of the
-                            factory and
-                            registered office with phone, fax and email etc.</label>
-                    </div>
-                    <div class="form-group" id="address_of_factory_div">
-                        <label for="address_of_factory_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="address_of_factory_remarks" id="address_of_factory_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="name_of_chief_executive_check" name="name_of_chief_executive_check">
-                        <label class="form-check-label" for="name_of_chief_executive_check">Name of the Chief
-                            Executive /
-                            Managing
-                            Director or an authorized officer of
-                            the firm for correspondence with EDB.</label>
-                    </div>
-                    <div class="form-group" id="name_of_chief_executive_div">
-                        <label for="name_of_chief_executive_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="name_of_chief_executive_remarks" id="name_of_chief_executive_remarks"
-                            rows="3" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="manpower_break_up_check" name="manpower_break_up_check">
-                        <label class="form-check-label" for="manpower_break_up_check">Manpower break up as
-                            technical/non
-                            technical, (if any.)</label>
-                    </div>
-                    <div class="form-group" id="manpower_break_up_div">
-                        <label for="manpower_break_up_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="manpower_break_up_remarks" id="manpower_break_up_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="parts_catalogue_check" name="parts_catalogue_check">
-                        <label class="form-check-label" for="parts_catalogue_check">Parts Catalogue of vehicle
-                            duly
-                            signed
-                            and stamped.</label>
-                    </div>
-                    <div class="form-group" id="parts_catalogue_div">
-                        <label for="parts_catalogue_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="parts_catalogue_remarks" id="parts_catalogue_remarks" rows="3" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="noc_from_municipal_check" name="noc_from_municipal_check">
-                        <label class="form-check-label" for="noc_from_municipal_check">An NOC from the Municipal
-                            Committee /
-                            Town Committee.</label>
-                    </div>
-                    <div class="form-group" id="noc_from_municipal_div">
-                        <label for="noc_from_municipal_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="noc_from_municipal_remarks" id="noc_from_municipal_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory"
-                            id="registration_of_firm_check" name="registration_of_firm_check">
-                        <label class="form-check-label" for="registration_of_firm_check">Copy of the registration
-                            of
-                            firm with
-                            SECP in case of Private Limited or Public
-                            Limited compay and registration with The Registrar of Firms in case of AOP.</label>
-                    </div>
-                    <div class="form-group" id="registration_of_firm_div">
-                        <label for="registration_of_firm_remarks">Deficiencies/ Remarks
-                            <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="registration_of_firm_remarks" id="registration_of_firm_remarks" rows="3"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory" id="format_I_check"
-                            name="format_I_check">
-                        <label class="form-check-label" for="format_I_check">List of 100% parts with %age index
-                            constituting a
-                            complte vehicle as per the
-                            attached Format-I and comprising off:-<br>
-                            i- Importable components.<br>
-                            ii- Localized components to be procured from the vendors with their names &
-                            contacts against each item.<br>
-                            iii- List of componnts to be manufactured in-house.<br>
-                            iv- Comparison of parts with parts contained under SRO 693(I)/2006.</label>
-                    </div>
-                    <div class="form-group" id="format_I_div">
-                        <label for="format_I_remarks">Deficiencies/ Remarks <span class="text-danger">*</span></label>
-                        <textarea class="form-control" name="format_I_remarks" id="format_I_remarks" rows="3" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" class="compulsory" id="format_II_check"
-                            name="format_II_check">
-                        <label class="form-check-label" for="format_II_check">List of CKD parts to be imported
-                            under
-                            condition (iii) of
-                            the
-                            SRO for
-                            verification as per attached Format-II.</label>
-                    </div>
-                    <div class="form-group" id="format_II_div">
-                        <label for="format_II_remarks">Deficiencies/ Remarks <span
-                                class="text-danger">*</span></label>
-                        <textarea class="form-control" name="format_II_remarks" id="format_II_remarks" rows="3" required></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-fotter">
-                <button class="btn btn-primary  btn-sm" class="close" data-dismiss="modal" type="button"
-                    data-toggle="modal" data-target="#forward_application" id="accept_btn">Forward for futher
-                    processing</button>
-                <button class="btn btn-danger  btn-sm" name="action" type="submit" value="revision"
-                    id="revision_btn">Return to OEM</button>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <!-- Forward Modal -->
 <div class="modal custom-modal fade" id="forward_application" role="dialog">
