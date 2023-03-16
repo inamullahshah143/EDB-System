@@ -42,10 +42,6 @@ All Normal Users Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('issuance', IssuanceController::class);
-Route::get('/addition', [AdditionController::class, 'index'])->name('addition.index');
-Route::get('/amendment', [AmendmentController::class, 'index'])->name('amendment.index');
-Route::get('/revalidation', [RevalidationController::class, 'index'])->name('revalidation.index');
 Route::resource('sro693', SRO693Controller::class);
 Route::post('/sro693/upload', [SRO693Controller::class, 'upload'])->name('sro693.upload');
 Route::resource('pct_headings', PctHeadingController::class);
@@ -78,6 +74,10 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:edb'])->group(function () {
 Route::get('/edb/home', [HomeController::class, 'edbHome'])->name('edb.home');
+Route::resource('issuance', IssuanceController::class);
+Route::get('/addition', [AdditionController::class, 'index'])->name('addition.index');
+Route::get('/amendment', [AmendmentController::class, 'index'])->name('amendment.index');
+Route::get('/revalidation', [RevalidationController::class, 'index'])->name('revalidation.index');
 });
 
 

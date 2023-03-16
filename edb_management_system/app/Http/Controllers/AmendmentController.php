@@ -23,8 +23,8 @@ class AmendmentController extends Controller
             'addition' => AdditionApplication::latest()->count(),
             'amendment' => AmendmentApplication::latest()->count(),
             'revalidation' => RevalidationApplication::latest()->count(),
-            'menu' => 'menu.v_menu_admin',
-            'content' => 'content.view_amendment_application',
+            'menu' => 'menu.v_menu_edb',
+            'content' => 'edb.content.view_amendment_application',
             'title' => 'Amendment in Existing Quota Requests'
         ];
         return view('layouts.v_template', $data);

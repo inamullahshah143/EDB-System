@@ -23,8 +23,8 @@ class AdditionController extends Controller
          'addition' => AdditionApplication::latest()->count(),
          'amendment' => AmendmentApplication::latest()->count(),
          'revalidation' => RevalidationApplication::latest()->count(),
-         'menu' => 'menu.v_menu_admin',
-         'content' => 'content.view_addition_application',
+         'menu' => 'menu.v_menu_edb',
+         'content' => 'edb.content.view_addition_application',
          'title' => 'Addition of New Model Requests'
       ];
       return view('layouts.v_template', $data);

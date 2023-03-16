@@ -23,8 +23,8 @@ class RevalidationController extends Controller
             'addition' => AdditionApplication::latest()->count(),
             'amendment' => AmendmentApplication::latest()->count(),
             'revalidation' => RevalidationApplication::latest()->count(),
-            'menu' => 'menu.v_menu_admin',
-            'content' => 'content.view_revalidation_application',
+            'menu' => 'menu.v_menu_edb',
+            'content' => 'edb.content.view_revalidation_application',
             'title' => 'Re-Validation Of Quota Requests'
         ];
         return view('layouts.v_template', $data);

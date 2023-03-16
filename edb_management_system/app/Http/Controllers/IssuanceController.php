@@ -36,8 +36,8 @@ class IssuanceController extends Controller
             'addition' => AdditionApplication::latest()->count(),
             'amendment' => AmendmentApplication::latest()->count(),
             'revalidation' => RevalidationApplication::latest()->count(),
-            'menu' => 'menu.v_menu_admin',
-            'content' => 'content.view_issuance_application',
+            'menu' => 'menu.v_menu_edb',
+            'content' => 'edb.content.view_issuance_application',
             'title' => 'Issuance Of Import Quota Requests'
         ];
 
