@@ -8,6 +8,8 @@ use App\Models\AmendmentApplication;
 use App\Models\RevalidationApplication;
 use App\Models\IssuanceApplication;
 use Illuminate\Http\Request;
+use App\Models\Role;
+use DataTables;
 
 class RoleController extends Controller
 {
@@ -21,7 +23,7 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = [
          'issuance' => IssuanceApplication::latest()->count(),
@@ -32,6 +34,22 @@ class RoleController extends Controller
          'content' => 'content.roles_permission',
          'title' => 'Roles & Permissions'
       ];
+      if ($request->ajax()) {
+            $q_role = Role::all();
+            return Datatables::of($q_role)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '<div data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit"
+             class="btn btn-sm btn-icon btn-outline-success btn-circle mr-2 editRecord"><i class=" fi-rr-edit"></i>
+         </div>';
+                    $btn = $btn . ' <div data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete"
+             class="btn btn-sm btn-icon btn-outline-danger btn-circle mr-2 deleteRecord"><i class="fi-rr-trash"></i>
+         </div>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
       return view('layouts.v_template', $data);
     }
 
@@ -53,7 +71,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Role::updateOrCreate(
+                ['id' => $request->record_id],
+                [
+                    'name' => $request->role_title,
+                    'guard_name' => $request->guard_name,
+                ]
+            );
+            return response()->json(['success' => 'Role created successfully!']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->errorInfo]);
+        }
     }
 
     /**
@@ -75,7 +104,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Record = Role::find($id);
+        return response()->json($Record);
     }
 
     /**
@@ -98,6 +128,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::find($id)->delete();
+        return response()->json(['success' => 'Record deleted!']);
     }
 }

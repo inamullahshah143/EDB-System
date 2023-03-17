@@ -218,29 +218,13 @@
                             <input class="form-check-input" type="checkbox" class="compulsory"
                                 id="technical_agreement_doc_check" name="technical_agreement_doc_check">
                             <label class="form-check-label" for="technical_agreement_doc_check">Technical assistance
-                                agreement with the foreign principal, (if any.)</label>
+                                agreement with the foreign principal and document validatity (if any.)</label>
                         </div>
                         <div class="form-group" id="technical_agreement_doc_div">
                             <label for="technical_agreement_doc_remarks">Deficiencies/ Remarks<span
                                     class="text-danger">*</span></label>
                             <textarea class="form-control" id="technical_agreement_doc_remarks" name="technical_agreement_doc_remarks"
                                 rows="3" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" class="compulsory"
-                                id="technical_agreement_doc_validatity_check"
-                                name="technical_agreement_doc_validatity_check">
-                            <label for="technical_agreement_doc_validatity_check" class="form-check-label">Technical
-                                Agreement Document Validatity</label>
-                        </div>
-                        <div class="form-group" id="technical_agreement_doc_validatity_div">
-                            <label for="technical_agreement_doc_validatity_remarks">Deficiencies/ Remarks <span
-                                    class="text-danger">*</span></label>
-                            <textarea class="form-control" id="technical_agreement_doc_validatity_remarks"
-                                name="technical_agreement_doc_validatity_remarks" rows="3" required></textarea>
                         </div>
                     </div>
 
@@ -269,7 +253,7 @@
                                 of plant/
                                 machinery/equipment
                                 installed as in-house
-                                facilities.</label>
+                                facilities, and their validatity</label>
                         </div>
                         <div class="form-group" id="purchase_documents_of_plant_div">
                             <label for="purchase_documents_of_plant_remarks">Deficiencies/ Remarks
@@ -471,9 +455,10 @@
 
                     <div class="form-group">
                         <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" class="compulsory" id="format_I_check"
-                                name="format_I_check">
-                            <label class="form-check-label" for="format_I_check">List of 100% parts with %age index
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="under_sro_656_check" name="under_sro_656_check">
+                            <label class="form-check-label" for="under_sro_656_check">List of 100% parts with %age
+                                index
                                 constituting a
                                 complte vehicle as per the
                                 attached Format-I and comprising off:-<br>
@@ -483,28 +468,28 @@
                                 iii- List of componnts to be manufactured in-house.<br>
                                 iv- Comparison of parts with parts contained under SRO 693(I)/2006.</label>
                         </div>
-                        <div class="form-group" id="format_I_div">
-                            <label for="format_I_remarks">Deficiencies/ Remarks <span
+                        <div class="form-group" id="under_sro_656_div">
+                            <label for="under_sro_656_remarks">Deficiencies/ Remarks <span
                                     class="text-danger">*</span></label>
-                            <textarea class="form-control" name="format_I_remarks" id="format_I_remarks" rows="3" required></textarea>
+                            <textarea class="form-control" name="under_sro_656_remarks" id="under_sro_656_remarks" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" class="compulsory" id="format_II_check"
-                                name="format_II_check">
-                            <label class="form-check-label" for="format_II_check">List of CKD parts to be imported
+                            <input class="form-check-input" type="checkbox" class="compulsory"
+                                id="under_sro_693_check" name="under_sro_693_check">
+                            <label class="form-check-label" for="under_sro_693_check">List of CKD parts to be imported
                                 under
                                 condition (iii) of
                                 the
                                 SRO for
                                 verification as per attached Format-II.</label>
                         </div>
-                        <div class="form-group" id="format_II_div">
-                            <label for="format_II_remarks">Deficiencies/ Remarks <span
+                        <div class="form-group" id="under_sro_693_div">
+                            <label for="under_sro_693_remarks">Deficiencies/ Remarks <span
                                     class="text-danger">*</span></label>
-                            <textarea class="form-control" name="format_II_remarks" id="format_II_remarks" rows="3" required></textarea>
+                            <textarea class="form-control" name="under_sro_693_remarks" id="under_sro_693_remarks" rows="3" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -574,8 +559,8 @@
             $('#parts_catalogue_div').show();
             $('#noc_from_municipal_div').show();
             $('#registration_of_firm_div').show();
-            $('#format_I_div').show();
-            $('#format_II_div').show();
+            $('#under_sro_656_div').show();
+            $('#under_sro_693_div').show();
             var acceptBtn = document.getElementById("accept_btn").disabled = true;
             var revisionBtn = document.getElementById("revision_btn").disabled = false;
 
@@ -710,20 +695,20 @@
                     $('#registration_of_firm_remarks').prop('required', false);
                 }
             });
-            $('#format_I_check').on('change', function() {
-                $('#format_I_div').toggle();
-                if ($('#format_I_remarks').prop('required')) {
-                    $('#format_I_remarks').prop('required', true);
+            $('#under_sro_656_check').on('change', function() {
+                $('#under_sro_656_div').toggle();
+                if ($('#under_sro_656_remarks').prop('required')) {
+                    $('#under_sro_656_remarks').prop('required', true);
                 } else {
-                    $('#format_I_remarks').prop('required', false);
+                    $('#under_sro_656_remarks').prop('required', false);
                 }
             });
-            $('#format_II_check').on('change', function() {
-                $('#format_II_div').toggle();
-                if ($('#format_II_remarks').prop('required')) {
-                    $('#format_II_remarks').prop('required', true);
+            $('#under_sro_693_check').on('change', function() {
+                $('#under_sro_693_div').toggle();
+                if ($('#under_sro_693_remarks').prop('required')) {
+                    $('#under_sro_693_remarks').prop('required', true);
                 } else {
-                    $('#format_II_remarks').prop('required', false);
+                    $('#under_sro_693_remarks').prop('required', false);
                 }
             });
 

@@ -12,8 +12,16 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table text-nowrap" id="tableRole">
                             <thead class="font-weight-bold text-center">
+                                <thead class="font-weight-bold text-center">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Guard Name</th>
+                                        <th style="width:90px;">Action</th>
+                                    </tr>
+                                </thead>
                             </thead>
                             <tbody class="text-center">
                             </tbody>
@@ -48,22 +56,9 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-6 form-contorller"> <select id="choices-multiple-remove-button"
-                                placeholder="Select upto 5 tags" multiple>
-                                <option value="HTML">HTML</option>
-                                <option value="Jquery">Jquery</option>
-                                <option value="CSS">CSS</option>
-                                <option value="Bootstrap 3">Bootstrap 3</option>
-                                <option value="Bootstrap 4">Bootstrap 4</option>
-                                <option value="Java">Java</option>
-                                <option value="Javascript">Javascript</option>
-                                <option value="Angular">Angular</option>
-                                <option value="Python">Python</option>
-                                <option value="Hybris">Hybris</option>
-                                <option value="SQL">SQL</option>
-                                <option value="NOSQL">NOSQL</option>
-                                <option value="NodeJS">NodeJS</option>
-                            </select> </div>
+                        <label for="guard_name">Guard Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="guard_name" name="guard_name" required />
+                        <span class="form-text text-muted">GM, DM, AM, etc...</span>
                     </div>
                 </form>
             </div>
@@ -98,42 +93,41 @@
                     showConfirmButton: true,
                 })
             }
-            // table serverside
-            // var table = $('#tablePCTHeading').DataTable({
-            //     processing: true,
-            //     serverSide: true,
-            //     ordering: true,
-            //     bDestroy: true,
-            //     bJQueryUI: true,
-            //     dom: 'Bfrtip',
-            //     buttons: [
-            //         'copy', 'excel', 'pdf'
-            //     ],
-            //     ajax: "{{ route('pct_headings.index') }}",
-            //     className: "text-right",
-            //     columns: [{
-            //             data: 'id',
-            //             name: 'id'
-            //         },
-            //         {
-            //             data: 'pct_heading',
-            //             name: 'pct_heading',
-            //             className: "text-left",
-            //             render: $.fn.dataTable.render.number(',', '.', 2),
-            //         },
-            //         {
-            //             data: 'description',
-            //             name: 'description',
-            //             className: "text-left",
-            //         },
-            //         {
-            //             data: 'action',
-            //             name: 'action',
-            //             orderable: false,
-            //             searchable: false
-            //         },
-            //     ]
-            // });
+
+            var table = $('#tableRole').DataTable({
+                processing: true,
+                serverSide: true,
+                ordering: true,
+                bDestroy: true,
+                bJQueryUI: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ],
+                ajax: "{{ route('role.index') }}",
+                className: "text-right",
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name',
+                        className: "text-center",
+                    },
+                    {
+                        data: 'guard_name',
+                        name: 'guard_name',
+                        className: "text-center",
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            });
 
             // csrf token
             $.ajaxSetup({
@@ -178,6 +172,48 @@
                         swal_error();
                     }
                 });
+            });
+
+
+            // initialize btn delete
+            $('body').on('click', '.deleteRecord', function() {
+                var record_id = $(this).data("id");
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: "{{ route('role.store') }}" + '/' + record_id,
+                            success: function(data) {
+                                swal_success();
+                                table.draw();
+                            },
+                            error: function(data) {
+                                swal_error();
+                            }
+                        });
+                    }
+                })
+            });
+
+            // initialize btn edit
+            $('body').on('click', '.editRecord', function() {
+                var record_id = $(this).data('id');
+                $.get("{{ route('role.index') }}" + '/' + record_id + '/edit', function(data) {
+                    $('#addBtn').val("edit-record");
+                    $('#addBtn').html("Update");
+                    $('#modal-create-role').modal('show');
+                    $('#record_id').val(data.id);
+                    $('#role_title').val(data.name);
+                    $('#guard_name').val(data.guard_name);
+                })
             });
         });
     </script>
