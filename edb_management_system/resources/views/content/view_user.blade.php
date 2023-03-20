@@ -13,10 +13,9 @@
                         <table class="table" id="tableUser">
                             <thead class="font-weight-bold text-center">
                                 <tr>
-                                    {{-- <th>No.</th> --}}
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Level</th>
+                                    <th>Role</th>
                                     <th style="width:90px;">Action</th>
                                 </tr>
                             </thead>
@@ -45,14 +44,14 @@
                 <form id="formUser" name="formUser">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Name"><br>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="email">
+                        <input type="email" name="email" class="form-control" id="email"
+                            placeholder="email"><br>
                         <select name="level" class="form-control" id="level">
                             <option selected disabled>-- Select Designation --</option>
-                            <option value="1">Assistant Manager</option>
-                            <option value="2">Deputy Manager</option>
-                            <option value="3">General Manager</option>
-                            <option value="4">Chief Executive Officer</option>
-                        </select>
+                            @foreach ($role_list as $role)
+                                <option value="{{ $role['value'] }}">{{ $role['name'] }}</option>
+                            @endforeach
+                        </select><br>
                         <input type="text" name="password" class="form-control" placeholder="password"><br>
                         <input type="hidden" name="user_id" id="user_id" value="">
                     </div>

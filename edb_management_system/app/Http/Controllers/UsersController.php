@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\AdditionApplication;
 use App\Models\AmendmentApplication;
 use App\Models\RevalidationApplication;
@@ -21,6 +22,11 @@ class UsersController extends Controller
 
     public function index(Request $request)
     {
+        $role_list = array();
+        $roles = Role::all();
+        foreach ($roles as $role) {
+            $role_list[] = array('name' => $role->name, 'value' => $role->guard_name);
+        }
         $data = [
             'issuance' => IssuanceApplication::latest()->count(),
             'addition' => AdditionApplication::latest()->count(),
@@ -28,20 +34,17 @@ class UsersController extends Controller
             'revalidation' => RevalidationApplication::latest()->count(),
             'menu' => 'menu.v_menu_admin',
             'content' => 'content.view_user',
-            'title' => 'Table User'
+            'title' => 'Table User',
+            'role_list' => $role_list
         ];
-
         if ($request->ajax()) {
-
             
             $q_user = User::select('*')->where('level', '!=', 0)->orderByDesc('created_at');
             return Datatables::of($q_user)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-
                     $btn = '<div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="btn btn-sm btn-icon btn-outline-success btn-circle mr-2 edit editUser"><i class=" fi-rr-edit"></i></div>';
                     $btn = $btn . ' <div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-sm btn-icon btn-outline-danger btn-circle mr-2 deleteUser"><i class="fi-rr-trash"></i></div>';
-
                     return $btn;
                 })
                 ->rawColumns(['action'])

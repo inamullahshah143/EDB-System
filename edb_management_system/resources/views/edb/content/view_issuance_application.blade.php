@@ -193,7 +193,6 @@
 </div>
 
 <!-- Proceed Application-->
-
 <form action="{{ route('application_remarks') }}" method="POST">
     @csrf
     <div class="modal fade" id="proceed_application" data-backdrop="static" tabindex="-1" role="dialog"
@@ -505,6 +504,48 @@
     </div>
 </form>
 
+<!-- SRO-656 CKD Modal -->
+<div class="modal fade" id="sro_656_ckd_modal" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title   text-white">SRO-656 CKD</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close  text-white"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive" style="overflow-x: auto">
+                    <table class="table text-nowrap" style="width:auto" id="table656CKD">
+                        <thead>
+                            <tr>
+                                <th> <input type="checkbox" id="checked" name="checked[]" value=""></th>
+                                <th> Part Name/ Description as per Parts Catalogue</th>
+                                <th> Part No.</th>
+                                <th> Respective PCT Heading</th>
+                                <th> Name of Sub-Assy/ Assy</th>
+                                <th> Input Qty/ Vehicle</th>
+                                <th> No. of Units/ Annum</th>
+                                <th> Total Approved Qty/ Annum</th>
+                                <th> UOM</th>
+                                <th> CD Rate Applicable (%)</th>
+                                <th> Percentage Index (%)</th>
+                                <th> Status Imports/ Vendorized/ In-House Manufactured</th>
+                                <th> Remarks</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /SRO-656 CKD Modal -->
+
 <!-- Forward Modal -->
 <div class="modal custom-modal fade" id="forward_application" role="dialog">
     <div class="modal-dialog modal-dialog-center">
@@ -521,14 +562,15 @@
                     <select class="form-control default-select wide @error('role_name') is-invalid @enderror"
                         name="role_name" id="role_name">
                         <option selected disabled>-- Select Designation --</option>
-                        <option value="1">Assistant Manager</option>
-                        <option value="2">Deputy Manager</option>
-                        <option value="3">General Manager</option>
-                        <option value="4">Chief Executive Officer</option>
+                        @foreach ($role_list as $role)
+                            @if ($role['name'] != 'Admin')
+                                <option value="{{ $role['value'] }}">{{ $role['name'] }}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Remarks <span class="text-danger">*</span>></label>
+                    <label>Remarks <span class="text-danger">*</span></label>
                     <textarea class="form-control" name="" id=""></textarea>
                 </div>
             </div>
@@ -885,6 +927,32 @@
                     },
                 ]
             });
+
+            // // table serverside
+            // var table = $('#table656CKD').DataTable({
+            //     processing: true,
+            //     serverSide: true,
+            //     ordering: true,
+            //     bDestroy: true,
+            //     bJQueryUI: true,
+            //     dom: 'Bfrtip',
+            //     buttons: [
+            //         'copy', 'excel', 'pdf'
+            //     ],
+            //     ajax: "{{ url('/656_ckd') }}",
+            //     className: "text-right",
+            //     columns: [{
+            //             data: 'id',
+            //             name: 'id'
+            //         },
+            //         {
+            //             data: 'part_name_description',
+            //             name: 'part_name_description	',
+            //             className: "text-left",
+            //         },
+
+            //     ]
+            // });
 
             // csrf token
             $.ajaxSetup({

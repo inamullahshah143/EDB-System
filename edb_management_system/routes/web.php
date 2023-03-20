@@ -76,6 +76,7 @@ All Admin Routes List
 Route::middleware(['auth', 'user-access:edb'])->group(function () {
 Route::get('/edb/home', [HomeController::class, 'edbHome'])->name('edb.home');
 Route::resource('issuance', IssuanceController::class);
+Route::get('/656_ckd', 'IssuanceController@get656CKD')->name('get656CKD');
 Route::get('/addition', [AdditionController::class, 'index'])->name('addition.index');
 Route::get('/amendment', [AmendmentController::class, 'index'])->name('amendment.index');
 Route::get('/revalidation', [RevalidationController::class, 'index'])->name('revalidation.index');

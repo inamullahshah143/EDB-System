@@ -11,6 +11,7 @@ use App\Models\PctSubHeading;
 use App\Models\Vehicle;
 use App\Models\File;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\RegisterOem;
 use Illuminate\Http\Request;
 use App\Imports\FormatOneImport;
@@ -31,6 +32,11 @@ class IssuanceController extends Controller
 
     public function index(Request $request)
     {
+        $role_list = array();
+        $roles = Role::all();
+        foreach ($roles as $role) {
+            $role_list[] = array('name' => $role->name, 'value' => $role->guard_name);
+        }
         $data = [
             'issuance' => IssuanceApplication::latest()->count(),
             'addition' => AdditionApplication::latest()->count(),
@@ -38,7 +44,8 @@ class IssuanceController extends Controller
             'revalidation' => RevalidationApplication::latest()->count(),
             'menu' => 'menu.v_menu_edb',
             'content' => 'edb.content.view_issuance_application',
-            'title' => 'Issuance Of Import Quota Requests'
+            'title' => 'Issuance Of Import Quota Requests',
+            'role_list' => $role_list
         ];
 
         if ($request->ajax()) {
@@ -165,7 +172,7 @@ class IssuanceController extends Controller
                 </button>';
                 return $btn;
             })->addColumn('ckd_under_656', function ($row) {
-                $btn = '<button type="button" class="btn"><i class="fa fa-file-excel-o"></i></button>';
+                $btn = '<button type="button" class="btn" data-toggle="modal" id="pdfBtn" data-target="#sro_656_ckd_modal"><i class="fa fa-file-excel-o"></i></button>';
                 return $btn;
             })->addColumn('ckd_under_693', function ($row) {
                 $btn = '<button type="button" class="btn"><i class="fa fa-file-excel-o"></i></button>';
@@ -179,6 +186,16 @@ class IssuanceController extends Controller
                 ->make(true);
         }
         return view('layouts.v_template', $data);
+    }
+
+    public function get656CKD(Request $request){
+        dd(Under656Part::all());
+        if ($request->ajax()) {
+            $q_ckd = Under656Part::all();
+            return Datatables::of($q_ckd)
+                ->addIndexColumn()
+                ->make(true);
+        }
     }
 
     public function application(Request $request)
